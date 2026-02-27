@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/mls-draft-calculator/static/css/main.cd12db02.css",
+    "main.js": "/mls-draft-calculator/static/js/main.8b4687c2.js",
+    "static/js/453.20d10484.chunk.js": "/mls-draft-calculator/static/js/453.20d10484.chunk.js",
+    "index.html": "/mls-draft-calculator/index.html",
+    "main.cd12db02.css.map": "/mls-draft-calculator/static/css/main.cd12db02.css.map",
+    "main.8b4687c2.js.map": "/mls-draft-calculator/static/js/main.8b4687c2.js.map",
+    "453.20d10484.chunk.js.map": "/mls-draft-calculator/static/js/453.20d10484.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cd12db02.css",
+    "static/js/main.8b4687c2.js"
+  ]
+}
