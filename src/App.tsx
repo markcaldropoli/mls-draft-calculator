@@ -54,6 +54,7 @@ const App: React.FC = () => {
             return division === DIVISION_CHAMPIONS ? mostRecentPassed.champDraftWeek ?? null : mostRecentPassed.lowerDraftWeek ?? null;
         }
         return division === DIVISION_CHAMPIONS ? (possibleChampWeeks[0] ?? null) : (possibleLowerWeeks[0] ?? null);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [division, possibleChampWeeks.length, possibleLowerWeeks.length, mostRecentPassed]);
 
     const [draftWeek, setDraftWeek] = useState<number | null>(initialDraftWeek);
@@ -140,6 +141,7 @@ const App: React.FC = () => {
         if (draftWeek == null || !opts.includes(draftWeek)) {
             setDraftWeek(opts[0] ?? null);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [division, possibleChampWeeks.length, possibleLowerWeeks.length, mostRecentPassed]);
 
     useEffect(() => {

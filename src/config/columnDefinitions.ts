@@ -7,8 +7,14 @@ export const PlayerColumnDefs: ColDef[] = [
         width: 130
     },
     {
-        field: "n",
-        headerName: "Name"
+        headerName: 'Name',
+        field: 'n',
+        filterParams: {
+            textFormatter: removeDiacritics,
+            debounceMs: 200
+        },
+        getQuickFilterText: (params) => removeDiacritics(params && params.value),
+        width: 180
     },
     {
         field: "pos",
@@ -38,8 +44,13 @@ export const DraftColumnDefs: ColDef[] = [
         width: 90
     },
     {
-        field: "n",
-        headerName: "Name",
+        headerName: 'Name',
+        field: 'n',
+        filterParams: {
+            textFormatter: removeDiacritics,
+            debounceMs: 200
+        },
+        getQuickFilterText: (params) => removeDiacritics(params && params.value),
         width: 180
     },
     {
@@ -78,4 +89,10 @@ function convertNumberToPosition(num: number): string {
         default:
             return "Unknown";
     }
+}
+
+function removeDiacritics(value: string | null | undefined): string {
+  if (!value) return '';
+  // decompose accents then strip combining marks
+  return value.toString().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 }
