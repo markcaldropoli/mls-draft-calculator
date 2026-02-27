@@ -1,38 +1,36 @@
-.App {
-  text-align: center;
+html, body, #root, .App {
+  height: 100%;
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.app-title {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* use container height based on header (5vh) and padding (10px) so no vertical overflow */
+  height: calc(100vh - 5vh - 10px);
+  max-height: calc(100vh - 5vh - 10px);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.grid-container > div {
+  box-sizing: border-box;
+  padding: 0px 12px 14px 12px;
+  overflow: hidden;
+}
+
+/* ensure left/right panels fill the grid cell and use flex layout internally */
+.grid-container > .left,
+.grid-container > .right {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* helper so inner flex children can scroll correctly */
+.no-overflow {
+  min-height: 0;
+  overflow: hidden;
 }
