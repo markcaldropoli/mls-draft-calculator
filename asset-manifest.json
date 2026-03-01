@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/mls-draft-calculator/static/css/main.cd12db02.css",
-    "main.js": "/mls-draft-calculator/static/js/main.67824bb6.js",
+    "main.css": "/mls-draft-calculator/static/css/main.80c55c57.css",
+    "main.js": "/mls-draft-calculator/static/js/main.2bdd57a1.js",
     "static/js/453.20d10484.chunk.js": "/mls-draft-calculator/static/js/453.20d10484.chunk.js",
     "index.html": "/mls-draft-calculator/index.html",
-    "main.cd12db02.css.map": "/mls-draft-calculator/static/css/main.cd12db02.css.map",
-    "main.67824bb6.js.map": "/mls-draft-calculator/static/js/main.67824bb6.js.map",
+    "main.80c55c57.css.map": "/mls-draft-calculator/static/css/main.80c55c57.css.map",
+    "main.2bdd57a1.js.map": "/mls-draft-calculator/static/js/main.2bdd57a1.js.map",
     "453.20d10484.chunk.js.map": "/mls-draft-calculator/static/js/453.20d10484.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.cd12db02.css",
-    "static/js/main.67824bb6.js"
+    "static/css/main.80c55c57.css",
+    "static/js/main.2bdd57a1.js"
   ]
 }
