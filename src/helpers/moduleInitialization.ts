@@ -1,4 +1,4 @@
-import { CellStyleModule, CheckboxEditorModule, ClientSideRowModelModule, ColumnApiModule, ModuleRegistry, RowSelectionModule, ValidationModule } from 'ag-grid-community';
+import { CellStyleModule, CheckboxEditorModule, ClientSideRowModelModule, ColumnApiModule, ModuleRegistry, QuickFilterModule, RowApiModule, RowSelectionModule, ValidationModule } from 'ag-grid-community';
 import { ClipboardModule, ContextMenuModule, ExcelExportModule, SetFilterModule } from 'ag-grid-enterprise';
 
 export const InitializeAgGrid = () => {
@@ -12,6 +12,8 @@ export const InitializeAgGrid = () => {
         ExcelExportModule,
         ColumnApiModule,
         RowSelectionModule,
-        CheckboxEditorModule
+        CheckboxEditorModule,
+        QuickFilterModule,
+        RowApiModule
     ]);
 }

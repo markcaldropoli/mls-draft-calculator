@@ -1,32 +1,32 @@
 import { GridOptions, Theme, ThemeDefaultParams } from 'ag-grid-enterprise';
 import PlayerPoints from '../models/PlayerPoints';
-import SelectedPreview from './LineupOutput';
+import LineupOutput from './LineupOutput';
 import SelectedGrid from './SelectedGrid';
 
 interface Props {
     theme: Theme<ThemeDefaultParams>;
+    gridOptions: GridOptions;
+    columnDefs: any;
     loadingPlayers: boolean;
     rightRows: PlayerPoints[];
     totalRightPoints: number;
-    onCopy: (text: string) => void;
     copied: boolean;
-    gridOptions: GridOptions;
-    columnDefs: any;
+    onCopy: (text: string) => void;
     onCellValueRightChanged: (params: any) => void;
     onGridReady: (e: any) => void;
 }
 
 export default function RightPanel({
+    theme,
+    gridOptions,
+    columnDefs,
     loadingPlayers,
     rightRows,
     totalRightPoints,
-    onCopy,
     copied,
-    gridOptions,
-    columnDefs,
+    onCopy,
     onCellValueRightChanged,
-    onGridReady,
-    theme
+    onGridReady
 }: Props) {
     if (loadingPlayers) {
         return null;
@@ -36,7 +36,7 @@ export default function RightPanel({
         <div className="right">
             <div style={{ height: "100%", display: 'flex', flexDirection: 'column' }} className="no-overflow">
                 <div style={{ flex: '1 1 auto', minHeight: 0, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-                    <SelectedPreview
+                    <LineupOutput
                         rightRows={rightRows}
                         totalRightPoints={totalRightPoints}
                         onCopy={onCopy}

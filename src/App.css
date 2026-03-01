@@ -34,3 +34,30 @@ html, body, #root, .App {
   min-height: 0;
   overflow: hidden;
 }
+
+.team-manager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  gap: 12px;
+}
+
+.team-manager .group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.team-manager .divider {
+  width: 1px;
+  height: 28px;
+  background: rgba(0,0,0,0.12);
+  margin: 0 12px;
+}
+
+.team-manager .btn-theme {
+  font-family: 'IBM Plex Sans';
+  background: #1f2e4f;
+  color: #b7c7dd;
+}

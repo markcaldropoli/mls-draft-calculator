@@ -85,7 +85,7 @@ const LineupOutput: React.FC<Props> = ({ rightRows, totalRightPoints, onCopy, co
                 </div>
             </div>
 
-            <div style={{ overflow: 'auto', paddingTop: 8, paddingRight: 8, paddingLeft: 0 }}>
+            <div style={{ overflow: 'auto' }}>
                 <pre style={{ fontFamily: 'IBM Plex Sans', whiteSpace: 'pre-wrap', background: '#f6f8fb', padding: 10, borderRadius: 4 }}>{formattedRightGridText}</pre>
             </div>
         </div>

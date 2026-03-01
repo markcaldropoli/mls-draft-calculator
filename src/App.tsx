@@ -19,6 +19,8 @@ import { clearToken, getValidToken, storeToken } from './services/TokenService';
 const TEAM_IDS = [198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227];
 const TEAM_URLS = TEAM_IDS.map(id => `https://api.kickbase.com/v4/competitions/9/teams/${id}/teamprofile`);
 const DIVISION_CHAMPIONS = 'Champions' as const;
+const DIVISION_LOWER = 'Lower' as const;
+const DIVISION_KEY = 'mls_division';
 
 const App: React.FC = () => {
     const gridApi = useRef<GridApi<Player> | null>(null);
@@ -28,7 +30,27 @@ const App: React.FC = () => {
     const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
     const [subCache, setSubCache] = useState<Record<string, boolean>>({});
     const [copied, setCopied] = useState(false);
-    const [division, setDivision] = useState<'Champions' | 'Lower'>(DIVISION_CHAMPIONS);
+    const [division, setDivision] = useState<typeof DIVISION_CHAMPIONS | typeof DIVISION_LOWER>(() => {
+        try {
+            const raw = localStorage.getItem(DIVISION_KEY);
+            
+            if (raw === DIVISION_LOWER) {
+                return DIVISION_LOWER;
+            }
+        } catch {
+            // ignore
+        }
+
+        return DIVISION_CHAMPIONS;
+    });
+
+    useEffect(() => {
+        try {
+            localStorage.setItem(DIVISION_KEY, division);
+        } catch {
+            // ignore
+        }
+    }, [division]);
 
     const possibleChampWeeks = useMemo(() => {
         return Array.from(new Set(MatchSchedule2026.map(m => m.champDraftWeek).filter((v): v is number => v != null))).sort((a, b) => a - b);
@@ -101,6 +123,10 @@ const App: React.FC = () => {
 
     const onGridReady = useCallback((event: GridReadyEvent) => {
         gridApi.current = event.api;
+    }, []);
+
+    const getRowId = useCallback((params: any) => {
+        return String(params.data.i);
     }, []);
 
     const onCellValueRightChanged = useCallback((params: any) => {
@@ -177,23 +203,26 @@ const App: React.FC = () => {
             <div className='grid-container'>
                 <LeftPanel
                     theme={themeQuartz}
-                    loadingPlayers={loadingPlayers}
-                    leftRows={leftRows}
                     gridOptions={gridOptions}
                     columnDefs={PlayerColumnDefs}
+                    loadingPlayers={loadingPlayers}
+                    leftRows={leftRows}
+                    selectedIds={selectedIds}
+                    setSelectedIds={setSelectedIds}
+                    getRowId={getRowId}
                     onSelectionChanged={onSelectionChanged}
                     onGridReady={onGridReady}
                 />
 
                 <RightPanel
                     theme={themeQuartz}
+                    gridOptions={gridOptions}
+                    columnDefs={DraftColumnDefs}
                     loadingPlayers={loadingPlayers}
                     rightRows={rightRows}
                     totalRightPoints={totalRightPoints}
-                    onCopy={handleCopy}
                     copied={copied}
-                    gridOptions={gridOptions}
-                    columnDefs={DraftColumnDefs}
+                    onCopy={handleCopy}
                     onCellValueRightChanged={onCellValueRightChanged}
                     onGridReady={onGridReady}
                 />
